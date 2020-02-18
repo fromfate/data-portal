@@ -33,4 +33,4 @@ eureka:
 
 
 #logging:
-#  file: "/home/logs/ml-user-manager.log"
+#  file: "D:\logs\gateway.log"
