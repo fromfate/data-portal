@@ -1,6 +1,7 @@
 package com.asiainfo.entity;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.Date;
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int userId;
+    private Integer userId;
 
     @NotNull(message = "用户名不能为空")
     @Size(min=2,max=32,message="用户名长度应在2-32字符之内！")
@@ -21,7 +22,7 @@ public class User {
     @Column(name="reg_dts",columnDefinition="datetime COMMENT '创建时间'")
     Date regDts;
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 

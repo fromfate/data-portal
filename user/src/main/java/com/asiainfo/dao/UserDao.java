@@ -3,6 +3,7 @@ package com.asiainfo.dao;
 import com.asiainfo.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +21,5 @@ public interface UserDao extends PagingAndSortingRepository<User,Integer> {
     int updateUser(@Param("user") User user);
 
     Page<User> findAll(Specification<User> spec, Pageable pageable);
+
 }

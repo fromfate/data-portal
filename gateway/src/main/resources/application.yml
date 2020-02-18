@@ -6,14 +6,15 @@ spring:
         name: gateway
     cloud:
       gateway:
-#        discovery:
-#          locator:
-#            enabled: false
+        discovery:
+          locator:
+            enabled: false
+            lower-case-service-id: true #将请求路径上的服务名配置为小写
 
         routes:
         - id: user-server
-          uri: http://127.0.0.1:9988/
-#          uri: lb://USER
+#          uri: http://127.0.0.1:9988/
+          uri: lb://user
           predicates:
           - Path=/**
 
