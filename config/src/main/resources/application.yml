@@ -1,0 +1,34 @@
+server:
+   port: 7001
+
+spring:
+    application:
+      name: config
+    cloud:
+        config:
+            server:
+                git:
+                  uri: https://git.xxx/xxx/platform-config.git
+                  search-paths: xxx/config-repo
+                  username: liheng
+                  password: 123456
+#    security:
+#      user:
+#        name: admin
+#        password: hello123
+eureka:
+  client:
+    registerWithEureka: true
+     #是否从eureka获取服务信息
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: config-7001
+    prefer-ip-address: true
+#spring.boot.admin.client:
+    #url: http://admin:5000
+
+
+
+

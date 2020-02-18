@@ -1,0 +1,30 @@
+server:
+   port: 9988
+
+spring:
+    application:
+        name: user
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/asiainfo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+        username: root
+        password: 111111
+    jpa:
+        hibernate:
+          ddl-auto: update
+        show-sql: true
+
+eureka:
+  client:
+    registerWithEureka: true
+     #是否从eureka获取服务信息
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    instance-id: user-9988
+    prefer-ip-address: true
+
+
+#logging:
+#  file: "/home/logs/ml-user-manager.log"
