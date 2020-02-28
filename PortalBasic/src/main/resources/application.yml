@@ -1,9 +1,9 @@
 server:
-   port: 9988
+   port: 9966
 
 spring:
     application:
-        name: PortalAuth
+        name: PortalBasic
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://localhost:3306/asiainfo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
@@ -22,7 +22,7 @@ eureka:
     serviceUrl:
       defaultZone: http://127.0.0.1:8761/eureka/
   instance:
-    instance-id: auth-9988
+    instance-id: basic-9966
     prefer-ip-address: true
 
 
