@@ -15,7 +15,7 @@ public class User {
 
     @NotNull(message = "用户名不能为空")
     @Size(min=2,max=32,message="用户名长度应在2-32字符之内！")
-    @Column(name="username",columnDefinition="varchar(50) COMMENT '用户名'")
+    @Column(name="username",columnDefinition="varchar(32) COMMENT '用户名'")
     String username;
 
 
