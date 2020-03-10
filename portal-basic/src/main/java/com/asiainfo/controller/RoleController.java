@@ -8,7 +8,11 @@ import com.asiainfo.entity.Platform;
 import com.asiainfo.entity.Role;
 import com.asiainfo.exception.BadRequestException;
 import com.asiainfo.exception.ResourceNotFoundException;
+import com.asiainfo.operlog.BusinessType;
+import com.asiainfo.operlog.Log;
 import com.asiainfo.service.RoleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -19,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Api(tags = "角色管理")
 @RestController
 @RequestMapping("/roles")
 public class RoleController {
@@ -26,6 +31,8 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
+    @Log(title = "新增角色", action = BusinessType.INSERT)
+    @ApiOperation(value = "新增角色",notes = "新增角色")
     @PostMapping
     public RestResponse save(@Valid @RequestBody Role role){
         role.setOpTime(new Date());
@@ -33,6 +40,8 @@ public class RoleController {
         return new RestResponse("添加成功");
     }
 
+    @Log(title = "更新角色", action = BusinessType.UPDATE)
+    @ApiOperation(value = "更新角色",notes = "更新角色")
     @PutMapping
     public RestResponse update(@RequestBody Role role) throws BadRequestException, ResourceNotFoundException {
         if(role.getRoleId() == null){
@@ -49,6 +58,8 @@ public class RoleController {
         return new RestResponse("操作成功");
     }
 
+    @Log(title = "删除角色", action = BusinessType.DELETE)
+    @ApiOperation(value = "删除角色",notes = "删除角色")
     @DeleteMapping("/{id}")
     public RestResponse delete(@PathVariable Long id) throws ResourceNotFoundException, BadRequestException {
         Role role = roleService.getRoleById(id);
@@ -59,6 +70,8 @@ public class RoleController {
         return new RestResponse("删除成功");
     }
 
+    @Log(title = "是否激活角色", action = BusinessType.ENABLE_FORBIDDEN)
+    @ApiOperation(value = "是否激活角色",notes = "是否激活角色")
     @PostMapping("/isAvailable")
     public RestResponse isAvailable(@RequestBody Role role) throws BadRequestException, ResourceNotFoundException {
         if(role.getRoleId() == null){
@@ -79,6 +92,8 @@ public class RoleController {
     }
 
 
+    @Log(title = "查询角色列表-分页", action = BusinessType.SELECT)
+    @ApiOperation(value = "查询角色列表-分页",notes = "查询角色列表-分页")
     @GetMapping("/queryRoleList")
     public RestResponse getPublic(@RequestParam Integer pageNum,
                                   @RequestParam Integer pageSize,
@@ -88,6 +103,8 @@ public class RoleController {
         return new RestResponse(pageDto,"查询成功");
     }
 
+    @Log(title = "批量操作", action = BusinessType.UPDATE)
+    @ApiOperation(value = "批量操作",notes = "批量操作（激活、冻结、批量删除）")
     @PutMapping("/batch")
     public RestResponse batch(@RequestBody JSONObject param) throws BadRequestException {
 
@@ -114,6 +131,8 @@ public class RoleController {
         }
     }
 
+    @Log(title = "角色授权", action = BusinessType.UPDATE)
+    @ApiOperation(value = "角色授权",notes = "角色授权")
     @PostMapping("/authorize")
     public RestResponse authorize(@RequestBody JSONObject param) throws BadRequestException {
         Long roleId = param.getLong("roleId");
@@ -139,6 +158,8 @@ public class RoleController {
         return new RestResponse("操作成功");
     }
 
+    @Log(title = "查询角色下用户", action = BusinessType.SELECT)
+    @ApiOperation(value = "查询角色下用户",notes = "查询角色下用户")
     @GetMapping("/queryUser")
     public RestResponse queryUserByRoleId(@RequestParam Long roleId,
                                           @RequestParam String type) throws BadRequestException {

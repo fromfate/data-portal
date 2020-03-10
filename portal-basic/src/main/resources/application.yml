@@ -25,6 +25,12 @@ eureka:
     instance-id: basic-9966
     prefer-ip-address: true
 
+sjzt:
+  app-health:
+    # 数据中台--监控模块--服务健康监控--告警超时百分比（上报频率60秒，值为30，则 60+60*30% 秒内未上报不会为告警状态）
+    alarmDelayPercent: 30
+    # 数据中台--监控模块--服务健康监控--故障超时百分比
+    faultDelayPercent: 50
 
 #logging:
 #  file: "D:\logs\user.log"
