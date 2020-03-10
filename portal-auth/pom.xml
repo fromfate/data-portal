@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.asiainfo</groupId>
-	<artifactId>PortalAuth</artifactId>
+	<artifactId>portal-auth</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PortalAuth</name>
+	<name>portal-auth</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
