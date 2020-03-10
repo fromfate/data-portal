@@ -7,15 +7,15 @@
 ## eureka 
 服务注册，本地启动后，访问127.0.0.1:8761 即可查看。
 
-## Portalgateway
+## portal-gateway
 网关，对微服务提供统一访问入口，以及过滤请求等。
 
-## PortalAuth
+## portal-auth
 登录认证相关
 
-## PortalBasic
+## portal-basic
 门户后台核心逻辑
 
-## PortalSync
+## portal-sync
 数据同步服务
 
