@@ -21,6 +21,7 @@ public class TokenFilter implements GlobalFilter, Ordered{
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        //从redis里查询token，没有存在就抛异常
         String token = exchange.getRequest().getQueryParams().getFirst("token");
         if(StringUtils.isEmpty(token)){
             exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
